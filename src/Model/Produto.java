@@ -1,92 +1,60 @@
 package Model;
 
 public class Produto {
-    private String validade;
-    private double peso;
-    private double preco;
-    private String marca;
-    private String descricao;
-    private String tipo;
+	
+	    private int ID;
+	    private String nome;
+	    private float preco;
+	    private String tipo;
+	    protected float temperatura;
+		
+	    
+	    public Produto() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		public Produto(int ID, String nome, float preco) {
+			super();
+			this.ID = ID;
+			this.nome = nome;
+			this.preco = preco;
+		}
+		
+		
+		public int getID() {
+			return ID;
+		}
+		public void setID(int iD) {
+			ID = iD;
+		}
+		public String getNome() {
+			return nome;
+		}
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+		public double getPreco() {
+			return preco;
+		}
+		public void setPreco(float preco) {
+			this.preco = preco;
+		}
+		public String getTipo() {
+			return tipo;
+		}
+		public void setTipo(String tipo) {
+			this.tipo = tipo;
+		}
+		public double getTemperatura() {
+			return temperatura;
+		}
+		public void setTemperatura(float temperatura) {
+			this.temperatura = temperatura;
+		}
+		
+	    
 
-    private int codigodebarras;
-
-    
-
-
-    public Produto(String validade, double peso, double preco, String marca, String descricao, String tipo,
-			int codigodebarras) {
-		super();
-		this.validade = validade;
-		this.peso = peso;
-		this.preco = preco;
-		this.marca = marca;
-		this.descricao = descricao;
-		this.tipo = tipo;
-
-		this.codigodebarras = codigodebarras;
 	}
-
-	public Produto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getValidade() {
-        return validade;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public int getCodigodebarras() {
-        return codigodebarras;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public void setCodigodebarras(int codigodebarras) {
-        this.codigodebarras = codigodebarras;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public void setValidade(String validade) {
-        this.validade = validade;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-}
 
 
 

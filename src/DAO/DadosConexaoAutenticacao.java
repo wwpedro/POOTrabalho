@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 public class DadosConexaoAutenticacao {
     private Connection con;
     private String driver = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3306/autenticacao_usuarios";
+    private String url = "jdbc:mysql://localhost:3306/autenticacao_ususarios";
     private String user = "root";
-    private String password = "Senha123";
+    private String password = "vip123";
 
     public Connection conectar(){
         try {

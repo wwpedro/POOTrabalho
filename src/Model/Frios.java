@@ -1,26 +1,25 @@
 package Model;
 
 public class Frios extends Produto {
-    private double temperaturaCeucius;
 
-    
-	public Frios(String validade, double peso, double preco, String marca, String descricao, String tipo,
-			int codigodebarras, double temperaturaCeucius) {
-		super(validade, peso, preco, marca, descricao, tipo, codigodebarras);
-		this.temperaturaCeucius = temperaturaCeucius;
-	}
 
 	public Frios() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public double getTemperaturaCeucius() {
-		return temperaturaCeucius;
+	public Frios(int ID, String nome, float preco) {
+		super(ID, nome, preco);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setTemperaturaCeucius(double temperaturaCeucius) {
-		this.temperaturaCeucius = temperaturaCeucius;
-	}
+	public void setTemperatura(float temperatura) {
+        super.setTemperatura(temperatura);
+    }
+
+    public double getTemperatura() {
+        return super.getTemperatura();
+    }
 
 	
 	
