@@ -2,6 +2,10 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import Model.Condimentos;
+import Model.Frios;
+import Model.Higiene;
+import Model.Limpeza;
 import Model.Produto;
 
 import java.sql.ResultSet;
@@ -10,7 +14,7 @@ public class ConexaoBanco {
         DadosConexao dados = new DadosConexao();
         DadosConexaoAutenticacao dadosautenticacao = new DadosConexaoAutenticacao();
 
-        public void cadastrar_dados(Produto Produtos) throws SQLException {
+        public void cadastrar_dados(Produto Produtos, Frios frio, Limpeza limpeza, Higiene higiene, Condimentos condimento) throws SQLException {
                 dados.conectar();
                 String sql = "INSERT INTO produtos (codigo_de_barras, validade, peso_g, preco, marca, descricao, tipo, toxicidade, dano, temperatura, quantidade_conservantes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = dados.conectar().prepareStatement(sql);
@@ -21,6 +25,10 @@ public class ConexaoBanco {
                 stmt.setString(5, Produtos.getMarca());
                 stmt.setString(6, Produtos.getDescricao());
                 stmt.setString(7, Produtos.getTipo());
+                stmt.setString(7, limpeza.getToxicidade());
+                stmt.setString(7, higiene.getDano());
+                stmt.setDouble(7, frio.getTemperaturaCeucius());
+                stmt.setInt(7, condimento.getQtdConservantes());
                 stmt.execute();
 
                 System.out.println("Dados Cadastrados ao banco de dados.");

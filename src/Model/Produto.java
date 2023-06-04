@@ -86,15 +86,6 @@ public class Produto {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-    protected void aumentar_preco(double valor_aumentado) {
-        this.preco += valor_aumentado;
-    }
-
-    protected void diminuir_preco(double valor_diminuido) {
-        this.preco -= valor_diminuido;
-
-    }
 }
 
 

@@ -54,32 +54,32 @@ public class Estoque {
             Double temperatura = entrada.nextDouble();
             Frios frios = new Frios(dataValidade, peso, preco, marca, descricao,"Frios", codigoBarras, temperatura);
             frios.setTemperaturaCeucius(temperatura);
-            enviarDados.cadastrar_dados(frios);
+            enviarDados.cadastrar_dados(frios, frios, null, null, null);
 
         } else if (escolhaProduto.equals("2") || escolhaProduto.equals("limpeza")) {
             System.out.println("O produto é tóxico? (SIM ou NÃO)");
             String toxico = entrada.nextLine().toUpperCase();
             Limpeza limpeza = new Limpeza(dataValidade, peso, preco, marca, descricao,"Limpeza",codigoBarras,toxico);
             limpeza.setToxicidade(toxico);
-            enviarDados.cadastrar_dados(limpeza);
+            enviarDados.cadastrar_dados(limpeza,null, limpeza, null, null);
 
         } else if (escolhaProduto.equals("3") || escolhaProduto.equals("condimento") || escolhaProduto.equals("condimentos")) {
             System.out.println("O produto tem quantos conservantes?");
             int conservantes = entrada.nextInt();
             Condimentos condimentos = new Condimentos(dataValidade, peso, preco, marca, descricao,"Condimentos", codigoBarras, conservantes);
             condimentos.setQtdConservantes(conservantes);
-            enviarDados.cadastrar_dados(condimentos);
+            enviarDados.cadastrar_dados(condimentos, null, null, null, condimentos);
 
         } else if (escolhaProduto.equals("4") || escolhaProduto.equals("não perecível")) {
             NaoPereciveis naoPereciveis = new NaoPereciveis(dataValidade, peso, preco, marca, descricao,"NaoPerecivel", codigoBarras);
-            enviarDados.cadastrar_dados(naoPereciveis);
+            enviarDados.cadastrar_dados(naoPereciveis, null, null, null, null);
 
         } else if (escolhaProduto.equals("5") || escolhaProduto.equals("higiene")) {
             System.out.println("O produto causa algum dano? (SIM ou NÃO)");
             String dano = entrada.nextLine().toUpperCase();
             Higiene higiene = new Higiene(dataValidade, peso, preco, marca, descricao,"Higiene" ,codigoBarras,dano);
             higiene.setDano(dano);
-            enviarDados.cadastrar_dados(higiene);
+            enviarDados.cadastrar_dados(higiene, null, null, higiene, null);
         }
 
     }
@@ -89,5 +89,18 @@ public class Estoque {
         consultardados.receber_dados();
     }
 
-	public void RemoverProduto() {}
+	public void excluirProduto() throws SQLException {
+        ConexaoBanco deletardados = new ConexaoBanco();
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("** Para deletar um produto e necessario fornecer o codigo de barras **\n" +
+                "Qual o codigo de barras do produto?");
+        int codigo = entrada.nextInt();
+        deletardados.deletar_dados(codigo);
+    }
+	
+	public void enviarMercado() throws SQLException {
+		excluirProduto();
+		//pegar nome do mercado , exclui do banco e ver quantidade de produto que foi para o mercado
+	}
+	
 }
