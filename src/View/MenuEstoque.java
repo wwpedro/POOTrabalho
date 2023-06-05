@@ -14,7 +14,8 @@ public class MenuEstoque {
                     "1- Cadastrar produto\n" +
                     "2- Consultar estoque\n" +
                     "3- Excluir um produto\n" +
-                    "4- Encerrar programa");
+                    "4- Alterar produto\n" +
+                    "5- Encerrar programa");
 
             int opcao = entrada.nextInt();
             Estoque estoque = new Estoque();
@@ -25,14 +26,16 @@ public class MenuEstoque {
                 estoque.consultarEstoque();
             } else if (opcao == 3) {
             	estoque.excluirProduto();
-            } else if (opcao == 4){
+            }
+            else if (opcao == 4) {
+            	estoque.alterarProduto();
+            }
+            else if (opcao == 5){
                 break;
-            }else {
+            }
+            else {
                 System.out.println("Opcao invalida.");
             }
-
-
-
         }
     }
 }

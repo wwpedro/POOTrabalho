@@ -14,13 +14,12 @@ public class ConexaoBanco {
             dados.conectar();
             String sql = "INSERT INTO produtos (id,nome, preco, tipo, temperatura) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = dados.conectar().prepareStatement(sql);
-            stmt.setDouble(1, Produtos.getID());
+            stmt.setInt(1, Produtos.getID());
             stmt.setString(2, Produtos.getNome());
-            stmt.setDouble(3, Produtos.getPreco());
+            stmt.setFloat(3, Produtos.getPreco());
             stmt.setString(4, Produtos.getTipo());
             stmt.setDouble(5, Produtos.getTemperatura());
             stmt.execute();
-
             System.out.println("Dados Cadastrados ao banco de dados.");
     }
 
@@ -76,4 +75,34 @@ public class ConexaoBanco {
             }
             return false;
     }
-}
+    public void atualizarPreco(int id, float novoPreco) throws SQLException {
+        dados.conectar();
+        String sql = "UPDATE produtos SET preco = ? WHERE id = ?";
+        PreparedStatement stmt = dados.conectar().prepareStatement(sql);
+        stmt.setFloat(1, novoPreco);
+        stmt.setInt(2, id);
+        int rowsUpdated = stmt.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            System.out.println("Preço do produto atualizado no banco de dados.");
+        } else {
+            System.out.println("Nenhum registro encontrado para atualização do preço.");
+        }
+    }
+
+    public void atualizarNome(int id, String novoNome) throws SQLException {
+        dados.conectar();
+        String sql = "UPDATE produtos SET nome = ? WHERE id = ?";
+        PreparedStatement stmt = dados.conectar().prepareStatement(sql);
+        stmt.setString(1, novoNome);
+        stmt.setInt(2, id);
+        int rowsUpdated = stmt.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            System.out.println("Nome do produto atualizado no banco de dados.");
+        } else {
+            System.out.println("Nenhum registro encontrado para atualização do nome.");
+        }
+    }
+    	
+    }

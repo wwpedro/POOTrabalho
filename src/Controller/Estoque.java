@@ -1,12 +1,12 @@
 package Controller;
-
+import java.util.Locale;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import DAO.ConexaoBanco;
 import Model.Frios;
 import Model.NaoPereciveis;
-
+import java.util.Locale;
 public class Estoque implements EstoqueInterface{
 	
 	
@@ -25,6 +25,7 @@ public class Estoque implements EstoqueInterface{
     String nome = entrada.nextLine();
 
     System.out.println("3- Digite o preço do produto.");
+    entrada.useLocale(Locale.US);
     float preco = entrada.nextFloat();
 
     entrada.nextLine(); 
@@ -68,5 +69,29 @@ public class Estoque implements EstoqueInterface{
         int codigo = entrada.nextInt();
         deletardados.deletar_dados(codigo);
     }
-	
+	public void alterarProduto() throws SQLException {
+	    ConexaoBanco alterardados = new ConexaoBanco();
+	    Scanner entrada = new Scanner(System.in);
+	    System.out.println("** MENU **");
+	    System.out.println("1. Alterar Preço");
+	    System.out.println("2. Alterar Nome");
+	    int opcao = entrada.nextInt();
+	    entrada.nextLine();
+	    System.out.println("Digite o código de barras do produto.");
+	    int codigo = entrada.nextInt();
+	    entrada.nextLine();
+	    if (opcao == 1) {
+	        System.out.println("Digite o novo preço do produto.");
+	        entrada.useLocale(Locale.US);
+	        float preco = entrada.nextFloat();
+	        alterardados.atualizarPreco(codigo, preco);
+	    } else if (opcao == 2) {
+	        System.out.println("Digite o novo nome do produto.");
+	        String nome = entrada.nextLine();
+	        alterardados.atualizarNome(codigo, nome);
+	    }
+	}
+
+    	
 }
+

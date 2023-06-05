@@ -33,7 +33,7 @@ public class Produto {
 		public void setNome(String nome) {
 			this.nome = nome;
 		}
-		public double getPreco() {
+		public float getPreco() {
 			return preco;
 		}
 		public void setPreco(float preco) {

@@ -8,7 +8,7 @@ public class DadosConexao {
     private String driver = "com.mysql.cj.jdbc.Driver";
     private String url = "jdbc:mysql://localhost:3306/dados_produtos";
     private String user = "root";
-    private String password = "vip123";
+    private String password = "senha";
 
     public Connection conectar(){
         try {
